@@ -1,2 +1,5 @@
 allow hal_bluetooth_default vendor_mac_vendor_data_file:dir search;
 allow hal_bluetooth_default vendor_mac_vendor_data_file:file { open read };
+allow hal_bluetooth_default vendor_bt_data_file:dir rw_dir_perms;
+allow hal_bluetooth_default vendor_bt_data_file:file create_file_perms;
+allow hal_bluetooth_default vendor_ramdump_vendor_data_file:dir { getattr map open read };
