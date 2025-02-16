@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from HyperOS V816.0.5.0.UMNMIXM
+# All unpinned blobs below are extracted from OS2.0.3.0.VMNMIXM
 
 # ACDB
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
@@ -27,10 +27,11 @@ vendor/bin/audioadsprpcd
 vendor/etc/init/vendor.qti.adsprpc-guestos-service.rc
 vendor/etc/init/vendor.qti.audio-adsprpc-service.rc
 vendor/lib/libadsp_default_listener.so
+vendor/lib/libadsprpc.so
 vendor/lib64/libadsp_default_listener.so
+vendor/lib64/libadsprpc.so
 
 # ADSP modules
-vendor/lib/rfsa/adsp/misound_res_spk.bin
 vendor/lib/rfsa/adsp/bm2n00.bin
 vendor/lib/rfsa/adsp/bm2n01.bin
 vendor/lib/rfsa/adsp/bm2n02.bin
@@ -132,45 +133,46 @@ vendor/etc/bluetooth_qti_hearing_aid_audio_policy_configuration.xml
 vendor/firmware/aw882xx_acf.bin
 
 # Audio graph manager
--vendor/lib/libagm.so
--vendor/lib64/libagm.so
-vendor/bin/agmcap
-vendor/bin/agmcompressplay
-vendor/bin/agmplay
-vendor/bin/cplay
-vendor/bin/hw/vendor.qti.hardware.AGMIPC@1.0-service
+vendor/bin/agmcap;MAKE_COPY_RULE_ONLY
+vendor/bin/agmcompressplay;MAKE_COPY_RULE_ONLY
+vendor/bin/agmplay;MAKE_COPY_RULE_ONLY
+vendor/bin/cplay;MAKE_COPY_RULE_ONLY
+vendor/bin/hw/vendor.qti.hardware.AGMIPC@1.0-service;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/etc/init/vendor.qti.hardware.AGMIPC@1.0-service.rc
-vendor/lib/libagm_compress_plugin.so
-vendor/lib/libagm_mixer_plugin.so
-vendor/lib/libagm_pcm_plugin.so
-vendor/lib/libagmclient.so
-vendor/lib/libagmmixer.so
-vendor/lib/libmisight.so
--vendor/lib/vendor.qti.hardware.AGMIPC@1.0-impl.so
-vendor/lib/vendor.qti.hardware.AGMIPC@1.0.so
-vendor/lib64/libagm_compress_plugin.so
-vendor/lib64/libagm_mixer_plugin.so
-vendor/lib64/libagm_pcm_plugin.so
-vendor/lib64/libagmclient.so
-vendor/lib64/libagmmixer.so
-vendor/lib64/libmisight.so
--vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.AGMIPC@1.0.so
+vendor/lib/libagm.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libagm_compress_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libagm_mixer_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libagm_pcm_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libagmclient.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libagmmixer.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libmisight.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libsndcardparser.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/vendor.qti.hardware.AGMIPC@1.0-impl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/vendor.qti.hardware.AGMIPC@1.0.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagm.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagm_compress_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagm_mixer_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagm_pcm_plugin.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagmclient.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libagmmixer.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libmisight.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libsndcardparser.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/vendor.qti.hardware.AGMIPC@1.0.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 
 # Audio libraries
 vendor/etc/audio_cloud_control_white_list.xml
 vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
-vendor/lib/hw/audio.primary.taro.so
+vendor/lib/hw/audio.primary.taro.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/hw/gyro_fusion_interface.so
 vendor/lib/libadm.so
-vendor/lib/libadsprpc.so
-vendor/lib/libar-acdb.so
-vendor/lib/libar-gpr.so
-vendor/lib/libar-gsl.so
--vendor/lib/libar-pal.so
-vendor/lib/libats.so
+vendor/lib/libar-acdb.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libar-gpr.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libar-gsl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libar-pal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libats.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libaudio_log_utils.so
 vendor/lib/libaudiocloudctrl.so
 vendor/lib/libaudioroute_ext.so
@@ -178,81 +180,79 @@ vendor/lib/libcapiv2svacnnvendor.so
 vendor/lib/libcapiv2svarnnvendor.so
 vendor/lib/libcapiv2uvvendor.so
 vendor/lib/libdapparamstorage.so
-vendor/lib/libfmpal.so
+vendor/lib/libfmpal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libkaraokepal.so
-vendor/lib/liblx-ar_util.so
-vendor/lib/liblx-osal.so
-vendor/lib/libmcs.so
+vendor/lib/liblx-ar_util.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/liblx-osal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libmcs.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libpal_net_if.so
-vendor/lib/libpalclient.so
-vendor/lib/libqtigefar.so
+vendor/lib/libpalclient.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libqtigefar.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libresampler.so
 vendor/lib/libxlog.so
-vendor/lib/vendor.qti.hardware.pal@1.0-impl.so
-vendor/lib/vendor.qti.hardware.pal@1.0.so
-vendor/lib64/hw/audio.primary.taro.so
+vendor/lib/vendor.qti.hardware.pal@1.0-impl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/vendor.qti.hardware.pal@1.0.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/hw/audio.primary.taro.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/hw/gyro_fusion_interface.so
 vendor/lib64/libadm.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libar-acdb.so
-vendor/lib64/libar-gpr.so
-vendor/lib64/libar-gsl.so
--vendor/lib64/libar-pal.so
-vendor/lib64/libats.so
+vendor/lib64/libar-acdb.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libar-gpr.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libar-gsl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libar-pal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libats.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudiocloudctrl.so
 vendor/lib64/libaudioroute_ext.so
 vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
 vendor/lib64/libcapiv2uvvendor.so
-#vendor/lib64/libcrussp.so
 vendor/lib64/libdapparamstorage.so
-vendor/lib64/libfmpal.so
+vendor/lib64/libfmpal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/libkaraokepal.so
-vendor/lib64/liblx-ar_util.so
-vendor/lib64/liblx-osal.so
-vendor/lib64/libmcs.so
+vendor/lib64/liblx-ar_util.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/liblx-osal.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libmcs.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/libpal_net_if.so
-vendor/lib64/libpalclient.so
-vendor/lib64/libqtigefar.so
+vendor/lib64/libpalclient.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libqtigefar.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/libresampler.so
 vendor/lib64/libxlog.so
+vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/vendor.qti.hardware.pal@1.0.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 
 # Audio soundfx
 vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libhwdap.so
-vendor/lib/soundfx/libmisoundfx.so
-vendor/lib/soundfx/libshoebox.so
-vendor/lib/soundfx/libswdap.so
-vendor/lib/soundfx/libswgamedap.so
-vendor/lib/soundfx/libswvqe.so
 vendor/lib/soundfx/libaudiopreprocessing.so
 vendor/lib/soundfx/libbundlewrapper.so
 vendor/lib/soundfx/libdownmix.so
 vendor/lib/soundfx/libdynproc.so
 vendor/lib/soundfx/libeffectproxy.so
-vendor/lib/soundfx/libhapticgenerator.so
+vendor/lib/soundfx/libhapticgenerator.so;DISABLE_CHECKELF
+vendor/lib/soundfx/libhwdap.so
 vendor/lib/soundfx/libldnhncr.so
+vendor/lib/soundfx/libmisoundfx.so
 vendor/lib/soundfx/libreverbwrapper.so
+vendor/lib/soundfx/libshoebox.so
+vendor/lib/soundfx/libswdap.so
+vendor/lib/soundfx/libswgamedap.so
+vendor/lib/soundfx/libswvqe.so
 vendor/lib/soundfx/libvisualizer.so
 vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libhwdap.so
-vendor/lib64/soundfx/libmisoundfx.so
-vendor/lib64/soundfx/libshoebox.so
-vendor/lib64/soundfx/libswdap.so
-vendor/lib64/soundfx/libswgamedap.so
-vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/soundfx/libaudiopreprocessing.so
 vendor/lib64/soundfx/libbundlewrapper.so
 vendor/lib64/soundfx/libdownmix.so
 vendor/lib64/soundfx/libdynproc.so
 vendor/lib64/soundfx/libeffectproxy.so
-vendor/lib64/soundfx/libhapticgenerator.so
+vendor/lib64/soundfx/libhapticgenerator.so;DISABLE_CHECKELF
+vendor/lib64/soundfx/libhwdap.so
 vendor/lib64/soundfx/libldnhncr.so
+vendor/lib64/soundfx/libmisoundfx.so
 vendor/lib64/soundfx/libreverbwrapper.so
+vendor/lib64/soundfx/libshoebox.so
+vendor/lib64/soundfx/libswdap.so
+vendor/lib64/soundfx/libswgamedap.so
+vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/soundfx/libvisualizer.so
-vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
-vendor/lib64/vendor.qti.hardware.pal@1.0.so
 
 # Batterysecret
 vendor/bin/batterysecret
@@ -268,14 +268,14 @@ vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
-vendor/lib/lib_bt_aptx.so
-vendor/lib/lib_bt_ble.so
-vendor/lib/lib_bt_bundle.so
-vendor/lib/lib_bt_lhdc.so
+vendor/lib/lib_bt_aptx.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/lib_bt_ble.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/lib_bt_bundle.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/lib_bt_lhdc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/libbluetooth_audio_session_qti_2_1.so
+vendor/lib/libbt-hidlclient.so
 vendor/lib/libbtnv.so
-vendor/lib/libsoc_helper.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/btaudio_offload_if.so
@@ -285,14 +285,14 @@ vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.1-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
-vendor/lib64/lib_bt_aptx.so
-vendor/lib64/lib_bt_ble.so
-vendor/lib64/lib_bt_bundle.so
-vendor/lib64/lib_bt_lhdc.so
+vendor/lib64/lib_bt_aptx.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/lib_bt_ble.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/lib_bt_bundle.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/lib_bt_lhdc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbluetooth_audio_session_qti_2_1.so
+vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
-vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 
@@ -728,8 +728,7 @@ vendor/lib/libc++_shared.so
 vendor/lib/libcamxcommonutils.so
 vendor/lib/libcamxexternalformatutils.so
 vendor/lib/libcamxsettingsmanager.so
-vendor/lib/libmemunreachable.so
-vendor/lib/libmialgo_ai_vision.so
+vendor/lib/libmemunreachable.so;MODULE_SUFFIX=_vendor
 vendor/lib/libmialgo_utils.so
 vendor/lib/libos.so
 vendor/lib/libqshcamera.so
@@ -933,18 +932,18 @@ vendor/lib64/libHISCppAlgos.so
 vendor/lib64/libMiMotion.so
 vendor/lib64/libSNPE.so
 vendor/lib64/libSnpeHtpV69Stub.so
-vendor/lib64/libTrueSight.so
+vendor/lib64/libTrueSight.so;DISABLE_CHECKELF
 vendor/lib64/libXMFaceFocus.so
 vendor/lib64/libaidenoiser.so
-vendor/lib64/libalAILDC.so
+vendor/lib64/libalAILDC.so;DISABLE_CHECKELF
 vendor/lib64/libalAI_Seg.so
 vendor/lib64/libalCFR.so
-vendor/lib64/libalLDC.so
+vendor/lib64/libalLDC.so;DISABLE_CHECKELF
 vendor/lib64/libalNN.so
 vendor/lib64/libalNN_engine.so
 vendor/lib64/libalNN_gpu.so
-vendor/lib64/libalNN_snpe.so
-vendor/lib64/libalhLDC.so
+vendor/lib64/libalNN_snpe.so;FIX_SONAME
+vendor/lib64/libalhLDC.so;DISABLE_CHECKELF
 vendor/lib64/libanc_dc_base.so
 vendor/lib64/libanc_hdr.so
 vendor/lib64/libanc_supervq.so
@@ -1001,13 +1000,13 @@ vendor/lib64/libipebpsstriping170.so
 vendor/lib64/libipebpsstriping480.so
 vendor/lib64/libjpege.so
 vendor/lib64/libmctfengine_stub.so
-vendor/lib64/libmemunreachable.so
+vendor/lib64/libmemunreachable.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libmfGhostDetection.so
 vendor/lib64/libmiStereoFactoryRemapBasicLib.so
 vendor/lib64/libmi_supernight_raw_checker.so
 vendor/lib64/libmiai_deblur.so
 vendor/lib64/libmiai_portraitsupernight.so
-vendor/lib64/libmialgo_ai_vision.so
+vendor/lib64/libmialgo_ai_vision.so;DISABLE_CHECKELF
 vendor/lib64/libmialgo_aio_seg.so
 vendor/lib64/libmialgo_basic.so
 vendor/lib64/libmialgo_ellc.so
@@ -1191,6 +1190,7 @@ vendor/lib64/vendor.xiaomi.sensor.citsensorservice@2.0.so
 vendor/app/CACertService/CACertService.apk
 vendor/app/CneApp/CneApp.apk
 vendor/bin/cnd
+vendor/bin/qms;DISABLE_CHECKELF
 vendor/etc/cne/mwqem.conf
 vendor/etc/cne/profileMwqem.xml
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml
@@ -1224,12 +1224,13 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile7.xml
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
 vendor/etc/init/cnd.rc
-vendor/lib/libcne.so
+vendor/lib/libcacertclient.so
+vendor/lib/libcne.so;DISABLE_CHECKELF
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneoplookup.so
 vendor/lib/libcneqmiutils.so
 vendor/lib/libjnihelper.so
-vendor/lib/libmasc.so
+vendor/lib/libmasc.so;DISABLE_CHECKELF
 vendor/lib/libshsc.so
 vendor/lib/libwms.so
 vendor/lib/libwqe.so
@@ -1261,12 +1262,12 @@ vendor/lib/vendor.qti.hardware.slmadapter@1.0.so
 vendor/lib/vendor.qti.latency@2.0.so
 vendor/lib/vendor.qti.latency@2.1.so
 vendor/lib64/libcacertclient.so
-vendor/lib64/libcne.so
+vendor/lib64/libcne.so;DISABLE_CHECKELF
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libcneoplookup.so
 vendor/lib64/libcneqmiutils.so
 vendor/lib64/libjnihelper.so
-vendor/lib64/libmasc.so
+vendor/lib64/libmasc.so;DISABLE_CHECKELF
 vendor/lib64/libshsc.so
 vendor/lib64/libwms.so
 vendor/lib64/libwqe.so
@@ -1405,26 +1406,29 @@ system_ext/lib64/vendor.qti.diaghal@1.0.so
 vendor/bin/diag-router
 vendor/etc/init/vendor.qti.diag.rc
 vendor/etc/vintf/manifest/vendor.qti.diag.hal.service.xml
-vendor/lib/vendor.qti.diaghal@1.0.so
-vendor/lib64/vendor.qti.diaghal@1.0.so
+vendor/lib/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.diaghal@1.0.so;MODULE_SUFFIX=_vendor
 
 # Display
-vendor/bin/hw/vendor.qti.hardware.display.allocator-service
-vendor/bin/hw/vendor.qti.hardware.display.composer-service
+vendor/bin/hw/vendor.qti.hardware.display.allocator-service;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/bin/hw/vendor.qti.hardware.display.composer-service;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE;DISABLE_CHECKELF
 vendor/etc/init.panel_info.sh
 vendor/etc/init/vendor.qti.hardware.display.allocator-service.rc
 vendor/etc/init/vendor.qti.hardware.display.composer-service.rc
-vendor/etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml
-vendor/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml
 vendor/lib/hw/gralloc.default.so
 vendor/lib/libMiDispDevManager.so
+vendor/lib/libcolortempmode.so
 vendor/lib/libdisplayconfig.qti.so
 vendor/lib/libdisplaycount.so
 vendor/lib/libdisplaydebug.so
+vendor/lib/libeyecare.so
 vendor/lib/libgralloc.qti.so
 vendor/lib/libgralloccore.so
 vendor/lib/libgrallocutils.so
 vendor/lib/libmi-stc-HW-modulate.so
+vendor/lib/libmiSensorCtrl.so
+vendor/lib/libmiXmlParser.so
+vendor/lib/libmi_dspp.so
 vendor/lib/libqdMetaData.so
 vendor/lib/libqdutils.so
 vendor/lib/libqservice.so
@@ -1440,10 +1444,14 @@ vendor/lib64/libcolortempmode.so
 vendor/lib64/libdisplayconfig.qti.so
 vendor/lib64/libdisplaycount.so
 vendor/lib64/libdisplaydebug.so
+vendor/lib64/libeyecare.so
 vendor/lib64/libgralloc.qti.so
 vendor/lib64/libgralloccore.so
 vendor/lib64/libgrallocutils.so
 vendor/lib64/libmi-stc-HW-modulate.so
+vendor/lib64/libmiSensorCtrl.so
+vendor/lib64/libmiXmlParser.so
+vendor/lib64/libmi_dspp.so
 vendor/lib64/libqdMetaData.so
 vendor/lib64/libqdutils.so
 vendor/lib64/libqservice.so
@@ -1494,12 +1502,26 @@ vendor/lib/hw/displayfeature.default.so
 vendor/lib/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib/libdisplayfeature.so
 vendor/lib/libdisplayfeatureservice.so
-vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so
+vendor/lib/libdither.so
+vendor/lib/libflatmode.so
+vendor/lib/libfpsmonitor.so
+vendor/lib/libmiBrightness.so
+vendor/lib/libpaperMode.so
+vendor/lib/libsre.so
+vendor/lib/libtruetone.so
+vendor/lib/vendor.xiaomi.hardware.displayfeature@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/hw/displayfeature.default.so
 vendor/lib64/hw/vendor.xiaomi.hardware.displayfeature@1.0-impl.so
 vendor/lib64/libdisplayfeature.so
 vendor/lib64/libdisplayfeatureservice.so
-vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
+vendor/lib64/libdither.so
+vendor/lib64/libflatmode.so
+vendor/lib64/libfpsmonitor.so
+vendor/lib64/libmiBrightness.so
+vendor/lib64/libpaperMode.so
+vendor/lib64/libsre.so
+vendor/lib64/libtruetone.so
+vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so;MODULE_SUFFIX=_vendor
 
 # Display HDR - from ingot-user 14 UKQ1.240227.165 release-keys
 vendor/lib64/libgame_enhance.so|4432e47d990e98edb141becc345a92d03df26bf4
@@ -1572,7 +1594,7 @@ vendor/bin/hw/dolbycodec2
 vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc
 vendor/lib/c2.dolby.avc.dec.so
 vendor/lib/c2.dolby.avc.sec.dec.so
-vendor/lib/c2.dolby.client.so
+vendor/lib/c2.dolby.client.so;DISABLE_CHECKELF
 vendor/lib/c2.dolby.egl.so
 vendor/lib/c2.dolby.hevc.dec.so
 vendor/lib/c2.dolby.hevc.enc.so
@@ -1582,7 +1604,7 @@ vendor/lib/libdolbyottcameracontrol.so
 vendor/lib/libstagefrightdolby.so
 vendor/lib64/c2.dolby.avc.dec.so
 vendor/lib64/c2.dolby.avc.sec.dec.so
-vendor/lib64/c2.dolby.client.so
+vendor/lib64/c2.dolby.client.so;DISABLE_CHECKELF
 vendor/lib64/c2.dolby.egl.so
 vendor/lib64/c2.dolby.hevc.dec.so
 vendor/lib64/c2.dolby.hevc.enc.so
@@ -1631,24 +1653,24 @@ vendor/bin/vendor.dpmd
 vendor/etc/dpm_vndr/vendor.dpm.conf
 vendor/etc/init/dpmQmiMgr.rc
 vendor/etc/init/vendor.dpmd.rc
-vendor/lib/com.qualcomm.qti.dpm.api@1.0.so
+vendor/lib/com.qualcomm.qti.dpm.api@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib/libdpmqmihal.so
 vendor/lib/vendor.libdpmctmgr.so
 vendor/lib/vendor.libdpmfdmgr.so
-vendor/lib/vendor.libdpmframework.so
+vendor/lib/vendor.libdpmframework.so;DISABLE_CHECKELF
 vendor/lib/vendor.libdpmtcm.so
 vendor/lib/vendor.libmwqemiptablemgr.so
-vendor/lib/vendor.qti.hardware.dpmservice@1.0.so
-vendor/lib/vendor.qti.hardware.dpmservice@1.1.so
-vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
+vendor/lib/vendor.qti.hardware.dpmservice@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib/vendor.qti.hardware.dpmservice@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libdpmqmihal.so
 vendor/lib64/vendor.libdpmctmgr.so
 vendor/lib64/vendor.libdpmfdmgr.so
-vendor/lib64/vendor.libdpmframework.so
+vendor/lib64/vendor.libdpmframework.so;DISABLE_CHECKELF
 vendor/lib64/vendor.libdpmtcm.so
 vendor/lib64/vendor.libmwqemiptablemgr.so
-vendor/lib64/vendor.qti.hardware.dpmservice@1.0.so
-vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so
+vendor/lib64/vendor.qti.hardware.dpmservice@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.qti.hardware.dpmservice@1.1.so;MODULE_SUFFIX=_vendor
 
 # DRM
 vendor/bin/hw/android.hardware.drm@1.4-service.clearkey
@@ -1665,7 +1687,7 @@ vendor/lib/libGPreqcancel.so
 vendor/lib/libGPreqcancel_svc.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libcpion.so
-vendor/lib/libdrm.so
+vendor/lib/libdrm.so;MODULE_SUFFIX=_vendor
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libdrmutils.so
@@ -1680,7 +1702,7 @@ vendor/lib64/libGPreqcancel.so
 vendor/lib64/libGPreqcancel_svc.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libcpion.so
-vendor/lib64/libdrm.so
+vendor/lib64/libdrm.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
 vendor/lib64/libdrmutils.so
@@ -1724,8 +1746,8 @@ vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
 # Fingerprint
-odm/lib/vendor.xiaomi.hardware.fx.tunnel@1.0.so:vendor/lib/vendor.xiaomi.hardware.fx.tunnel@1.0.so
-odm/lib64/vendor.xiaomi.hardware.fx.tunnel@1.0.so:vendor/lib64/vendor.xiaomi.hardware.fx.tunnel@1.0.so
+odm/lib/vendor.xiaomi.hardware.fx.tunnel@1.0.so:vendor/lib/vendor.xiaomi.hardware.fx.tunnel@1.0.so;MODULE_SUFFIX=_vendor
+odm/lib64/vendor.xiaomi.hardware.fx.tunnel@1.0.so:vendor/lib64/vendor.xiaomi.hardware.fx.tunnel@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/hw/fingerprint.fpc_fod.so:vendor/lib64/hw/fingerprint.fpc_fod.default.so;FIX_SONAME
 vendor/lib64/hw/fingerprint.goodix_fod.so:vendor/lib64/hw/fingerprint.goodix_fod.default.so;FIX_SONAME
 vendor/lib64/libgf_hal.so
@@ -1747,7 +1769,7 @@ vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 # GNSS - from ingot-user 14 UKQ1.240227.165 release-keys
 vendor/bin/edgnss-daemon|11e295ebe350de7312a2ab97f25ccbbae48ed8a4
 vendor/bin/loc_launcher|dbc5addc025360fd04dec5b024d476514a6f613f
-vendor/bin/lowi-server|0a8998f8190c282a14fed9e33691b54a2dc6d3e9
+vendor/bin/lowi-server;DISABLE_CHECKELF|0a8998f8190c282a14fed9e33691b54a2dc6d3e9
 vendor/bin/mlid|ab9291752d37ae8165cb78a6a635d48f7a668c70
 vendor/bin/xtra-daemon|e4a632e4b1b6ac75e1921bcd0a17fd0450ccf906
 vendor/etc/init/loc-launcher.rc|2942e599cec7c3491aa170bf9606713ce3d07689
@@ -1913,18 +1935,17 @@ vendor/bin/hw/android.hardware.security.keymint-service-qti
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/permissions/android.hardware.hardware_keystore.xml
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti-rkp.xml
-vendor/lib/libqtikeymint.so
 vendor/lib64/libqtikeymint.so
 
 # Listen
 vendor/etc/vintf/manifest/manifest_non_qmaa.xml
 vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
-vendor/lib/hw/sound_trigger.primary.taro.so
+vendor/lib/hw/sound_trigger.primary.taro.so;MODULE_SUFFIX=_vendor
 vendor/lib/libeai_fixed_32.so
 vendor/lib/liblistensoundmodel2vendor.so
 vendor/lib/vendor.qti.hardware.ListenSoundModel@1.0-impl.so
 vendor/lib/vendor.qti.hardware.ListenSoundModel@1.0.so
-vendor/lib64/hw/sound_trigger.primary.taro.so
+vendor/lib64/hw/sound_trigger.primary.taro.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libeai_fixed.so
 vendor/lib64/libeai_float.so
 vendor/lib64/liblistensoundmodel2vendor.so
@@ -1966,16 +1987,16 @@ vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy
 vendor/etc/vintf/manifest/c2_manifest_vendor.xml
 vendor/etc/vintf/manifest/c2_manifest_vendor_audio.xml
 vendor/lib/libEvrcSwCodec.so
-vendor/lib/libOmxCore.so
+vendor/lib/libOmxCore.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libQcelp13SwCodec.so
 vendor/lib/libdeccfg.so
-vendor/lib/libmm-omxcore.so
-vendor/lib/libplatformconfig.so
+vendor/lib/libmm-omxcore.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libplatformconfig.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libqc2audio_base.so
 vendor/lib/libqc2audio_basecodec.so
 vendor/lib/libqc2audio_core.so
 vendor/lib/libqc2audio_hooks.so
-vendor/lib/libqc2audio_hwaudiocodec.so
+vendor/lib/libqc2audio_hwaudiocodec.so;DISABLE_CHECKELF
 vendor/lib/libqc2audio_platform.so
 vendor/lib/libqc2audio_swaudiocodec.so
 vendor/lib/libqc2audio_utils.so
@@ -1992,45 +2013,43 @@ vendor/lib/libqcodec2_mockqc2filter.so
 vendor/lib/libqcodec2_platform.so
 vendor/lib/libqcodec2_utils.so
 vendor/lib/libqcodec2_v4l2codec.so
-vendor/lib/libstagefright_soft_aacdec.so
-vendor/lib/libstagefright_soft_aacenc.so
+vendor/lib/libstagefrighthw.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_aacdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_aacenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libstagefright_soft_ac4dec.so
-vendor/lib/libstagefright_soft_amrdec.so
-vendor/lib/libstagefright_soft_amrnbenc.so
-vendor/lib/libstagefright_soft_amrwbenc.so
-vendor/lib/libstagefright_soft_avcdec.so
-vendor/lib/libstagefright_soft_avcenc.so
+vendor/lib/libstagefright_soft_amrdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_amrnbenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_amrwbenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_avcdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_avcenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libstagefright_soft_ddpdec.so
-vendor/lib/libstagefright_soft_flacdec.so
-vendor/lib/libstagefright_soft_flacenc.so
-vendor/lib/libstagefright_soft_g711dec.so
-vendor/lib/libstagefright_soft_gsmdec.so
-vendor/lib/libstagefright_soft_hevcdec.so
-vendor/lib/libstagefright_soft_mp3dec.so
-vendor/lib/libstagefright_soft_mpeg2dec.so
-vendor/lib/libstagefright_soft_mpeg4dec.so
-vendor/lib/libstagefright_soft_mpeg4enc.so
-vendor/lib/libstagefright_soft_opusdec.so
-vendor/lib/libstagefright_soft_rawdec.so
-vendor/lib/libstagefright_soft_vorbisdec.so
-vendor/lib/libstagefright_soft_vpxdec.so
-vendor/lib/libstagefright_soft_vpxenc.so
-vendor/lib/libstagefright_softomx.so
-vendor/lib/libstagefright_softomx_plugin.so
-vendor/lib/libstagefrighthw.so
+vendor/lib/libstagefright_soft_flacdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_flacenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_g711dec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_gsmdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_hevcdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_mp3dec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_mpeg2dec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_mpeg4dec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_mpeg4enc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_opusdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_rawdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_vorbisdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_vpxdec.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib/libstagefright_soft_vpxenc.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 vendor/lib/libvideotxr.so
 vendor/lib/qti.video.utils.videobufferlayout.so
 vendor/lib64/libEvrcSwCodec.so
-vendor/lib64/libOmxCore.so
+vendor/lib64/libOmxCore.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libQcelp13SwCodec.so
 vendor/lib64/libdeccfg.so
-vendor/lib64/libmm-omxcore.so
-vendor/lib64/libplatformconfig.so
+vendor/lib64/libmm-omxcore.so;MODULE_SUFFIX=_vendor
+vendor/lib64/libplatformconfig.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libqc2audio_base.so
 vendor/lib64/libqc2audio_basecodec.so
 vendor/lib64/libqc2audio_core.so
 vendor/lib64/libqc2audio_hooks.so
-vendor/lib64/libqc2audio_hwaudiocodec.so
+vendor/lib64/libqc2audio_hwaudiocodec.so;DISABLE_CHECKELF
 vendor/lib64/libqc2audio_platform.so
 vendor/lib64/libqc2audio_swaudiocodec.so
 vendor/lib64/libqc2audio_utils.so
@@ -2049,8 +2068,6 @@ vendor/lib64/libqcodec2_utils.so
 vendor/lib64/libqcodec2_v4l2codec.so
 vendor/lib64/libstagefright_soft_ac4dec.so
 vendor/lib64/libstagefright_soft_ddpdec.so
-vendor/lib64/libstagefright_softomx.so
-vendor/lib64/libstagefrighthw.so
 vendor/lib64/libvideotxr.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
 
@@ -2062,42 +2079,6 @@ vendor/lib/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
 vendor/lib/vendor.xiaomi.hardware.micharge@1.0.so
 vendor/lib64/hw/vendor.xiaomi.hardware.micharge@1.0-impl.so
 vendor/lib64/vendor.xiaomi.hardware.micharge@1.0.so
-
-# Misc
-vendor/lib/libawcal.so
-vendor/lib/libcolortempmode.so
-vendor/lib/libdither.so
-vendor/lib/libeyecare.so
-vendor/lib/libflatmode.so
-vendor/lib/libfpsmonitor.so
-vendor/lib/libmiBrightness.so
-vendor/lib/libmiSensorCtrl.so
-vendor/lib/libmiXmlParser.so
-vendor/lib/libmi_dspp.so
-vendor/lib/libpaperMode.so
-vendor/lib/libsre.so
-vendor/lib/libtruetone.so
-vendor/lib/libvndfwk_detect_jni.qti.so
-vendor/lib64/libPlatformValidatorShared.so
-vendor/lib64/libSnpeHtpPrepare.so
-vendor/lib64/libSnpeHtpV68Stub.so
-vendor/lib64/libawcal.so
-vendor/lib64/libcalculator.so
-vendor/lib64/libcalculator_htp.so
-vendor/lib64/libclient2slpi.notifier.so
-vendor/lib64/libdither.so
-vendor/lib64/libeyecare.so
-vendor/lib64/libflatmode.so
-vendor/lib64/libfpsmonitor.so
-vendor/lib64/libhta.so
-vendor/lib64/libmiBrightness.so
-vendor/lib64/libmiSensorCtrl.so
-vendor/lib64/libmiXmlParser.so
-vendor/lib64/libmi_dspp.so
-vendor/lib64/libpaperMode.so
-vendor/lib64/libsre.so
-vendor/lib64/libtruetone.so
-vendor/lib64/libvndfwk_detect_jni.qti.so
 
 # Mlipay
 vendor/bin/fidoca
@@ -2118,9 +2099,9 @@ vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.2.so
 vendor/lib/vendor.xiaomi.hardware.mfidoca@1.0.so
-vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so
-vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so
-vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so
+vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib/vendor.xiaomi.hardware.tidaservice@1.2.so
@@ -2131,11 +2112,11 @@ vendor/lib64/libmt.so
 vendor/lib64/libmt@1.3.so
 vendor/lib64/libtida@1.2.so
 vendor/lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
-vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so
-vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so
+vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.3.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.1.so
@@ -2333,8 +2314,8 @@ vendor/lib64/libpowercore.so
 # Psiclient
 vendor/bin/hw/vendor.qti.psiclient@1.0-service
 vendor/etc/init/vendor.qti.psiclient@1.0-service.rc
-vendor/lib/libpsi.so
-vendor/lib64/libpsi.so
+vendor/lib/libpsi.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
+vendor/lib64/libpsi.so;MODULE_SUFFIX=_vendor;MAKE_COPY_RULE
 
 # QCC - from ingot-user 14 UKQ1.240227.165 release-keys
 system_ext/app/QCC/QCC.apk|d3cbc08cb41bb36ff705109c4c49eba6083a5807
@@ -2355,10 +2336,10 @@ vendor/etc/init/init.qdmastats.rc|d7ddb87faaedd900f1756064fe756d50efed7ca9
 vendor/lib64/hw/vendor.qti.hardware.qccvndhal@1.0-impl.so|459d506b20124520f5d650a7b30c9a490514a878
 vendor/lib64/libgrpc++_unsecure.so:vendor/lib64/libgrpc++_unsecure_prebuilt.so|deef616f1a0fb091dbd553d807c097a7989f49fd
 vendor/lib64/libqcc_file_agent.so|2062da8684a791c3c8afe57f8be3d2b010337a8a
-vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so|ef866bab2186db1b2c09477e36fef20945fa671e
-vendor/lib64/vendor.qti.hardware.qccsyshal@1.1.so|0677ebfe099cdaa6c3776d0bd5318044a4220918
+vendor/lib64/vendor.qti.hardware.qccsyshal@1.0.so;MODULE_SUFFIX=_vendor|ef866bab2186db1b2c09477e36fef20945fa671e
+vendor/lib64/vendor.qti.hardware.qccsyshal@1.1.so;MODULE_SUFFIX=_vendor|0677ebfe099cdaa6c3776d0bd5318044a4220918
 vendor/lib64/vendor.qti.hardware.qccvndhal@1.0-halimpl.so|304ce0a1571f218ba16d0812221e4b2fae52a6d9
-vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so|bfddf0a295b391bc1ed7961d547e9b56e3aa1b9c
+vendor/lib64/vendor.qti.hardware.qccvndhal@1.0.so;MODULE_SUFFIX=_vendor|bfddf0a295b391bc1ed7961d547e9b56e3aa1b9c
 
 # QCOM system daemon
 vendor/bin/qcom-system-daemon
@@ -2518,7 +2499,7 @@ vendor/lib64/libtracker_6dof_impl.so
 
 # QXR
 vendor/etc/vintf/manifest/vendor.qti.hardware.qxr-service.xml
-vendor/lib64/vendor.qti.hardware.qxr-V1-ndk_platform.so
+vendor/lib64/vendor.qti.hardware.qxr-V1-ndk_platform.so;DISABLE_CHECKELF
 
 # RIL
 product/app/uimgbaservice/uimgbaservice.apk
@@ -2529,6 +2510,7 @@ product/framework/uimgbalibrary.jar
 product/framework/uimgbamanagerlibrary.jar
 product/framework/uimservicelibrary.jar
 system/lib/vendor.qti.diaghal-V1-ndk.so:system_ext/lib/vendor.qti.diaghal-V1-ndk.so
+system/lib64/vendor.qti.diaghal-V1-ndk.so:system_ext/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/app/ImsRcsService/ImsRcsService.apk
 system_ext/app/QtiTelephony/QtiTelephony.apk|3568126123554cbb94ea6f33ae6aa0e473ec8d88
 system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
@@ -2551,7 +2533,6 @@ system_ext/framework/vendor.qti.ims.rcsuce-V1.0-java.jar
 system_ext/framework/vendor.qti.ims.rcsuce-V1.1-java.jar
 system_ext/framework/vendor.qti.ims.rcsuce-V1.2-java.jar
 system_ext/framework/vendor.qti.ims.rcsuceaidlservice-V1-java.jar
-system/lib64/vendor.qti.diaghal-V1-ndk.so:system_ext/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/lib64/lib-imsvideocodec.so
 system_ext/lib64/lib-imsvt.so
 system_ext/lib64/lib-imsvtextutils.so
@@ -2751,7 +2732,7 @@ vendor/lib/vendor.qti.ims.rcsuce@1.0.so
 vendor/lib/vendor.qti.ims.rcsuce@1.1.so
 vendor/lib/vendor.qti.ims.rcsuce@1.2.so
 vendor/lib/vendor.qti.imsrtpservice@3.0-service-Impl.so
-vendor/lib/vendor.qti.imsrtpservice@3.0.so
+vendor/lib/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so
 vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so
 vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so
@@ -2888,7 +2869,7 @@ vendor/lib64/vendor.qti.ims.rcsuce@1.0.so
 vendor/lib64/vendor.qti.ims.rcsuce@1.1.so
 vendor/lib64/vendor.qti.ims.rcsuce@1.2.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so
-vendor/lib64/vendor.qti.imsrtpservice@3.0.so
+vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor
 
 # Secure element
 vendor/bin/hw/vendor.qti.secure_element@1.2-service
@@ -3267,6 +3248,7 @@ system_ext/lib/libmmparser_lite.so
 system_ext/lib/libmmrtpdecoder.so
 system_ext/lib/libmmrtpencoder.so
 system_ext/lib/libwfdavenhancements.so
+system_ext/lib/libwfdclient.so
 system_ext/lib/libwfdcommonutils.so
 system_ext/lib/libwfdconfigutils.so
 system_ext/lib/libwfddisplayconfig.so
@@ -3282,24 +3264,30 @@ system_ext/lib/libwfduibcsinkinterface.so
 system_ext/lib/libwfduibcsrc.so
 system_ext/lib/libwfduibcsrcinterface.so
 system_ext/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
+system_ext/lib/vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk.so
 system_ext/lib64/libmmosal.so
 system_ext/lib64/libmmparser_lite.so
 system_ext/lib64/libmmrtpdecoder.so
 system_ext/lib64/libmmrtpencoder.so
+system_ext/lib64/libwfdavenhancements.so
 system_ext/lib64/libwfdclient.so
 system_ext/lib64/libwfdcommonutils.so
 system_ext/lib64/libwfdconfigutils.so
 system_ext/lib64/libwfddisplayconfig.so
 system_ext/lib64/libwfdmminterface.so
 system_ext/lib64/libwfdmmsink.so
+system_ext/lib64/libwfdmmsrc_system.so
 system_ext/lib64/libwfdnative.so
 system_ext/lib64/libwfdrtsp.so
+system_ext/lib64/libwfdservice.so
 system_ext/lib64/libwfdsinksm.so
 system_ext/lib64/libwfduibcinterface.so
 system_ext/lib64/libwfduibcsink.so
 system_ext/lib64/libwfduibcsinkinterface.so
 system_ext/lib64/libwfduibcsrc.so
 system_ext/lib64/libwfduibcsrcinterface.so
+system_ext/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
+system_ext/lib64/vendor.qti.hardware.wifidisplaysession_aidl-V1-ndk.so
 system_ext/priv-app/WfdService/WfdService.apk
 vendor/bin/wfdhdcphalservice
 vendor/bin/wfdvndservice
@@ -3338,7 +3326,7 @@ vendor/lib64/libwfduibcsinkinterface_vendor.so
 vendor/lib64/libwfduibcsrc_vendor.so
 vendor/lib64/libwfduibcsrcinterface_vendor.so
 vendor/lib64/libwfdutils_proprietary.so
-vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
+vendor/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.qti.hardware.wifidisplaysessionl@1.0-halimpl.so
 
 # Xiaomi MAC address
