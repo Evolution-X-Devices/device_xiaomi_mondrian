@@ -39,6 +39,6 @@
         "remote"       : "github",
         "repository"   : "flakeforever/hardware_xiaomi",
         "target_path"  : "hardware/xiaomi",
-        "branch"       : "udc"
+        "branch"       : "vic"
     }
 ]
