@@ -26,26 +26,16 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import org.lineageos.settings.R;
-import org.lineageos.settings.dolby.DolbyUtils;
 
 /** Provide preference summary for injected items. */
 public class SummaryProvider extends ContentProvider {
 
-    private static final String KEY_DOLBY = "dolby";
-
     @Override
     public Bundle call(String method, String uri, Bundle extras) {
-        final Bundle bundle = new Bundle();
-        String summary;
         switch (method) {
-            case KEY_DOLBY:
-                summary = getDolbySummary();
-                break;
             default:
                 throw new IllegalArgumentException("Unknown method: " + method);
         }
-        bundle.putString(META_DATA_PREFERENCE_SUMMARY, summary);
-        return bundle;
     }
 
     @Override
@@ -77,19 +67,5 @@ public class SummaryProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         throw new UnsupportedOperationException();
-    }
-
-    private String getDolbySummary() {
-        final DolbyUtils dolbyUtils = DolbyUtils.getInstance(getContext());
-        final boolean dsOn = dolbyUtils.getDsOn();
-        if (!dsOn) {
-            return getContext().getString(R.string.dolby_off);
-        }
-        final String profileName = dolbyUtils.getProfileName();
-        if (profileName == null) {
-            return getContext().getString(R.string.dolby_on);
-        } else {
-            return getContext().getString(R.string.dolby_on_with_profile, profileName);
-        }
     }
 }
