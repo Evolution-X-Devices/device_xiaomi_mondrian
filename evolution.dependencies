@@ -9,7 +9,7 @@
         "remote"       : "github",
         "repository"   : "Evolution-X-Devices/device_xiaomi_mondrian-kernel",
         "target_path"  : "device/xiaomi/mondrian-kernel",
-        "branch"       : "udc"
+        "branch"       : "vic"
     },
     { 
         "remote"       : "github",
