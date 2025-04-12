@@ -38,17 +38,6 @@ def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
-        'com.qualcomm.qti.dpm.api@1.0',
-        'vendor.qti.diaghal@1.0',
-        'vendor.qti.hardware.dpmservice@1.0',
-        'vendor.qti.hardware.dpmservice@1.1',
-        'vendor.qti.hardware.qccsyshal@1.0',
-        'vendor.qti.hardware.qccsyshal@1.1',
-        'vendor.qti.hardware.qccvndhal@1.0',
-        'vendor.qti.hardware.wifidisplaysession@1.0',
-        'vendor.qti.imsrtpservice@3.0',
-        'vendor.xiaomi.hardware.mlipay@1.0',
-        'vendor.xiaomi.hardware.mlipay@1.1',
         # agm
         'libagm',
         'libagm_compress_plugin',
@@ -60,6 +49,8 @@ lib_fixups: lib_fixups_user_type = {
         'libsndcardparser',
         'vendor.qti.hardware.AGMIPC@1.0-impl',
         'vendor.qti.hardware.AGMIPC@1.0',
+        # dpm
+        'com.qualcomm.qti.dpm.api@1.0',
         # graphservices
         'libar-acdb',
         'libar-gpr',
@@ -67,18 +58,37 @@ lib_fixups: lib_fixups_user_type = {
         'libar-pal',
         'libats',
         'liblx-ar_util',
-        'liblx-osal',        
+        'liblx-osal',
+        # omx
+        'libplatformconfig', 
         # pal
         'libpalclient',
         'vendor.qti.hardware.pal@1.0-impl',
         'vendor.qti.hardware.pal@1.0',
+        # psi
+        'libpsi',
         # primary-hal
         'audio.primary.taro',
         'libfmpal',
         'libmcs',
         'libqtigefar',
-        # omx
-        'libplatformconfig',
+        # qcc
+        'vendor.qti.diaghal@1.0',
+        'vendor.qti.hardware.dpmservice@1.0',
+        'vendor.qti.hardware.dpmservice@1.1',
+        'vendor.qti.hardware.qccsyshal@1.0',
+        'vendor.qti.hardware.qccsyshal@1.1',
+        'vendor.qti.hardware.qccvndhal@1.0',
+        'vendor.qti.hardware.wifidisplaysession@1.0',
+        'vendor.qti.imsrtpservice@3.0',
+        # xiaomi
+        'vendor.xiaomi.hardware.displayfeature@1.0',
+        'vendor.xiaomi.hardware.fx.tunnel@1.0',
+        'vendor.xiaomi.hardware.mlipay@1.0',
+        'vendor.xiaomi.hardware.mlipay@1.1',
+        'vendor.xiaomi.hardware.mtdservice@1.0',
+        'vendor.xiaomi.hardware.mtdservice@1.1',
+        'vendor.xiaomi.hardware.mtdservice@1.2',
     ): lib_fixup_vendor_suffix,
     (
         'libvibrator',
@@ -117,6 +127,18 @@ blob_fixups: blob_fixups_user_type = {
             'android.media.audio.common.types-V2-cpp.so',
             'android.media.audio.common.types-V4-cpp.so',
         ),
+    (
+        'vendor/lib/libcamxcommonutils.so',
+        'vendor/lib64/libcamxcommonutils.so',
+        'vendor/lib64/hw/com.qti.chi.override.so',
+        'vendor/lib64/libmialgoengine.so',
+    ): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
+    (
+        'vendor/lib/nfc_nci.nqx.default.hw.v1.so',
+        'vendor/lib64/nfc_nci.nqx.default.hw.v1.so',
+    ): blob_fixup()
+        .add_needed('libbase_shim.so'),
     (
         'vendor/lib/libsdmcore.so',
         'vendor/lib64/libsdmcore.so',
@@ -169,11 +191,6 @@ blob_fixups: blob_fixups_user_type = {
             'android.hardware.security.sharedsecret-V1-ndk.so',
         )
         .add_needed('android.hardware.security.rkp-V1-ndk.so'),
-    # 'vendor/bin/hw/vendor.qti.hardware.display.composer-service': blob_fixup()
-    #     .replace_needed(
-    #         'vendor.qti.hardware.display.config-V5-ndk_platform.so', 
-    #         'vendor.qti.hardware.display.config-V5-ndk.so'
-    #     ),
     'vendor/bin/qcc-trd': blob_fixup()
         .replace_needed(
             'libgrpc++_unsecure.so', 
@@ -189,13 +206,6 @@ blob_fixups: blob_fixups_user_type = {
     ): blob_fixup().regex_replace('xml=version', 'xml version'),
     'vendor/etc/camera/pureView_parameter.xml': blob_fixup()
         .regex_replace(r'=([0-9]+)>', r'="\1">'),
-    # (
-    #     'vendor/etc/seccomp_policy/atfwd@2.0.policy',
-    #     'vendor/etc/seccomp_policy/modemManager.policy',
-    #     'vendor/etc/seccomp_policy/sensors-qesdk.policy',
-    #     'vendor/etc/seccomp_policy/wfdhdcphalservice.policy',
-    # ): blob_fixup()
-    #     .add_line_if_missing('gettid: 1'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
