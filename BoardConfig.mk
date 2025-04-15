@@ -252,8 +252,8 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 TARGET_SCREEN_DENSITY := 560
 
 # Vibrator
-TARGET_QTI_VIBRATOR_EFFECT_LIB := libqtivibratoreffect.xiaomi
-TARGET_QTI_VIBRATOR_USE_EFFECT_STREAM := true
+$(call soong_config_set,qti_vibrator,effect_lib,libqtivibratoreffect.xiaomi)
+$(call soong_config_set,qti_vibrator,use_effect_stream,true)
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
