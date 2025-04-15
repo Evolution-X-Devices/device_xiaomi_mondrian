@@ -2445,7 +2445,6 @@ vendor/lib/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
 vendor/lib64/hw/vendor.qti.hardware.servicetracker@1.2-impl.so
 
 # QVR
-vendor/bin/hw/qvrservice
 vendor/bin/qvrdatalogger
 vendor/bin/qvrservicetest
 vendor/bin/qvrservicetest64
@@ -2491,9 +2490,7 @@ vendor/lib64/libhalide_hexagon_host.so
 vendor/lib64/libqvr_cam_cdsp_driver_stub.so
 vendor/lib64/libqvr_cdsp_driver_stub.so
 vendor/lib64/libqvr_eyetracking_plugin.so
-vendor/lib64/libqvr_hostcontroller_plugin.so
 vendor/lib64/libqvrcamera_client.qti.so
-vendor/lib64/libqvrservice.so
 vendor/lib64/libqvrservice_client.qti.so
 vendor/lib64/libtracker_6dof_impl.so
 
