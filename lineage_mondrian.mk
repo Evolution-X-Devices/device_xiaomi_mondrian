@@ -21,8 +21,8 @@ PRODUCT_SYSTEM_DEVICE := mondrian
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="mondrian_global-user 12 SKQ1.230401.001 OS2.0.7.0.VMNMIXM release-keys" \
-    BuildFingerprint=POCO/mondrian_global/mondrian:12/SKQ1.230401.001/OS2.0.7.0.VMNMIXM:user/release-keys \
+    BuildDesc="mondrian_global-user 12 SKQ1.230401.001 OS2.0.8.0.VMNMIXM release-keys" \
+    BuildFingerprint=POCO/mondrian_global/mondrian:12/SKQ1.230401.001/OS2.0.8.0.VMNMIXM:user/release-keys \
     DeviceProduct=$(PRODUCT_DEVICE)
 
 TARGET_BOOT_ANIMATION_RES := 1440
