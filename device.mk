@@ -320,9 +320,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/power/config/taro/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
-# PowerShare
+# Powershare
 PRODUCT_PACKAGES += \
-    vendor.lineage.powershare@1.0-service.xiaomi_mondrian
+    vendor.lineage.powershare-service.default
+
+$(call soong_config_set,lineage_powershare,powershare_path,/sys/class/qcom-battery/reverse_chg_mode)
 
 # Protobuf
 PRODUCT_PACKAGES += \

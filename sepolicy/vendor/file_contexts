@@ -53,7 +53,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.nxp\.hardware\.nfc@2\.0-service u:object_r:hal_nfc_default_exec:s0
 
 # Powershare
-/vendor/bin/hw/vendor\.lineage\.powershare@1\.0-service\.xiaomi u:object_r:hal_lineage_powershare_default_exec:s0
+/vendor/bin/hw/vendor\.lineage\.powershare-service\.default u:object_r:hal_lineage_powershare_default_exec:s0
 
 # Thermal
 /sys/class/thermal/thermal_zone87/temp u:object_r:sysfs_thermal:s0
