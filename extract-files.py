@@ -84,11 +84,13 @@ lib_fixups: lib_fixups_user_type = {
         # xiaomi
         'vendor.xiaomi.hardware.displayfeature@1.0',
         'vendor.xiaomi.hardware.fx.tunnel@1.0',
+        'vendor.xiaomi.hardware.mfidoca@1.0',
         'vendor.xiaomi.hardware.mlipay@1.0',
         'vendor.xiaomi.hardware.mlipay@1.1',
         'vendor.xiaomi.hardware.mtdservice@1.0',
         'vendor.xiaomi.hardware.mtdservice@1.1',
         'vendor.xiaomi.hardware.mtdservice@1.2',
+        'vendor.xiaomi.hardware.mtdservice@1.3',
     ): lib_fixup_vendor_suffix,
     (
         'libvibrator',
@@ -97,11 +99,6 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'vendor/lib64/libcamximageformatutils.so': blob_fixup()
-        .replace_needed(
-            'vendor.qti.hardware.display.config-V2-ndk_platform.so',
-            'vendor.qti.hardware.display.config-V2-ndk.so',
-        ),
     (
         'vendor/lib64/libTrueSight.so',
         'vendor/lib64/libalAILDC.so',
@@ -114,7 +111,10 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
-    'system_ext/lib64/libwfdmmsrc_system.so': blob_fixup()
+    (
+        'system_ext/lib/libwfdmmsrc_system.so',
+        'system_ext/lib64/libwfdmmsrc_system.so',
+    ): blob_fixup()
         .add_needed('libgui_shim.so'),
     'system_ext/lib64/libwfdnative.so': blob_fixup()
         .add_needed('libbinder_shim.so')
@@ -123,6 +123,7 @@ blob_fixups: blob_fixups_user_type = {
         'system_ext/lib/libwfdservice.so',
         'system_ext/lib64/libwfdservice.so',
     ): blob_fixup()
+        .add_needed('libaudioclient_shim.so')
         .replace_needed(
             'android.media.audio.common.types-V2-cpp.so',
             'android.media.audio.common.types-V4-cpp.so',

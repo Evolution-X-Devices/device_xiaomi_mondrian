@@ -41,6 +41,13 @@ cc_library_shared {
 }
 
 cc_library_shared {
+    name: "android.hardware.common-V2-ndk_platform",
+    shared_libs: ["android.hardware.common-V2-ndk"],
+    system_ext_specific: true,
+    vendor_available: true,
+}
+
+cc_library_shared {
     name: "android.hardware.neuralnetworks-V1-ndk_platform",
     shared_libs: ["android.hardware.neuralnetworks-V1-ndk"],
     system_ext_specific: true,

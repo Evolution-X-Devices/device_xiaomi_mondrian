@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from OS2.0.8.0.VMNMIXM
+# All unpinned blobs below are extracted from OS2.0.9.0.VMNMIXM
 
 # ACDB
 vendor/etc/acdbdata/IDP_UPD/IDP_UPD_acdb_cal.acdb
@@ -1934,7 +1934,7 @@ vendor/lib64/libqtikeymaster4.so
 vendor/bin/hw/android.hardware.security.keymint-service-qti
 vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/permissions/android.hardware.hardware_keystore.xml
-vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
+vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti-rkp.xml
 vendor/lib64/libqtikeymint.so
 
 # Listen
@@ -2098,7 +2098,7 @@ vendor/lib/libmlipay.so
 vendor/lib/libmlipay@1.1.so
 vendor/lib/libmt.so
 vendor/lib/libtida@1.2.so
-vendor/lib/vendor.xiaomi.hardware.mfidoca@1.0.so
+vendor/lib/vendor.xiaomi.hardware.mfidoca@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib/vendor.xiaomi.hardware.mlipay@1.1.so;MODULE_SUFFIX=_vendor
 vendor/lib/vendor.xiaomi.hardware.mtdservice@1.0.so;MODULE_SUFFIX=_vendor
@@ -2111,13 +2111,13 @@ vendor/lib64/libmlipay@1.1.so
 vendor/lib64/libmt.so
 vendor/lib64/libmt@1.3.so
 vendor/lib64/libtida@1.2.so
-vendor/lib64/vendor.xiaomi.hardware.mfidoca@1.0.so
+vendor/lib64/vendor.xiaomi.hardware.mfidoca@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.2.so;MODULE_SUFFIX=_vendor
-vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.3.so
+vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.3.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.1.so
 vendor/lib64/vendor.xiaomi.hardware.tidaservice@1.2.so
