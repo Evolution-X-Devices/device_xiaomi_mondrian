@@ -409,7 +409,7 @@ PRODUCT_PACKAGES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.xiaomi_sm8475
+    vendor.lineage.touch-service.xiaomi_sm8475
 
 # Touchscreen
 PRODUCT_COPY_FILES += \

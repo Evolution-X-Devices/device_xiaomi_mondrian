@@ -1,23 +1,27 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
- * Copyright (C) 2024 Flakeforever
- *
+ * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ *                         2023-2025 flakeforever
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "vendor.lineage.touch@1.0-service.xiaomi_sm8475"
+#define LOG_TAG "vendor.lineage.touch-service.xiaomi"
 
 #include "HighTouchPollingRate.h"
-#include <android-base/file.h>
-#include <android-base/logging.h>
-#include <sys/ioctl.h>
 #include "xiaomi_touch.h"
 
+#include <android-base/file.h>
+#include <android-base/logging.h>
+#include <android-base/strings.h>
+#include <sys/ioctl.h>
+
+using ::android::base::ReadFileToString;
+using ::android::base::Trim;
+using ::android::base::WriteStringToFile;
+
+namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace touch {
-namespace V1_0 {
-namespace implementation {
 
 #define TOUCH_DEV_PATH "/dev/xiaomi-touch"
 #define TOUCH_ID 0
@@ -57,13 +61,15 @@ bool getTouchModeValue(int mode, int* value) {
     return true;
 }
 
-Return<bool> HighTouchPollingRate::isEnabled() {
+ndk::ScopedAStatus HighTouchPollingRate::getEnabled(bool* _aidl_return) {
     int gameMode = 0;
     getTouchModeValue(Touch_Game_Mode, &gameMode);
-    return gameMode == 1;
+    *_aidl_return = gameMode == 1;
+
+    return ndk::ScopedAStatus::ok();
 }
 
-Return<bool> HighTouchPollingRate::setEnabled(bool enabled) {
+ndk::ScopedAStatus HighTouchPollingRate::setEnabled(bool enabled) {
     if (enabled) {
         getTouchModeValue(Touch_UP_THRESHOLD, &upThreshold);
         getTouchModeValue(Touch_Tolerance, &tolerance);
@@ -82,11 +88,11 @@ Return<bool> HighTouchPollingRate::setEnabled(bool enabled) {
         setTouchModeValue(Touch_Tolerance, tolerance);
         setTouchModeValue(Touch_Edge_Filter, edgeFilter);
     }
-    return true;
+
+    return ndk::ScopedAStatus::ok();
 }
 
-}  // namespace implementation
-}  // namespace V1_0
 }  // namespace touch
 }  // namespace lineage
 }  // namespace vendor
+}  // namespace aidl

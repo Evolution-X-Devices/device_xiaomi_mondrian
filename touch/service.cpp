@@ -1,33 +1,28 @@
 /*
- * Copyright (C) 2024 The LineageOS Project
- *
+ * SPDX-FileCopyrightText: 2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "vendor.lineage.touch@1.0-service.xiaomi_sm8475"
-
-#include <android-base/logging.h>
-#include <hidl/HidlTransportSupport.h>
+#define LOG_TAG "vendor.lineage.touch-service.xiaomi"
 
 #include "HighTouchPollingRate.h"
 
-using ::vendor::lineage::touch::V1_0::IHighTouchPollingRate;
-using ::vendor::lineage::touch::V1_0::implementation::HighTouchPollingRate;
+#include <android-base/logging.h>
+#include <android/binder_manager.h>
+#include <android/binder_process.h>
+
+using aidl::vendor::lineage::touch::HighTouchPollingRate;
 
 int main() {
-    android::sp<IHighTouchPollingRate> highTouchPollingRate = new HighTouchPollingRate();
+    binder_status_t status = STATUS_OK;
 
-    android::hardware::configureRpcThreadpool(1, true);
+    ABinderProcess_setThreadPoolMaxThreadCount(0);
 
-    if (highTouchPollingRate->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register touch high polling rate HAL service.";
-        return 1;
-    }
+    std::shared_ptr<HighTouchPollingRate> htpr = ndk::SharedRefBase::make<HighTouchPollingRate>();
+    const std::string htpr_instance = std::string(HighTouchPollingRate::descriptor) + "/default";
+    status = AServiceManager_addService(htpr->asBinder().get(), htpr_instance.c_str());
+    CHECK_EQ(status, STATUS_OK) << "Failed to add service " << htpr_instance << " " << status;
 
-    LOG(INFO) << "Touch HAL service ready.";
-
-    android::hardware::joinRpcThreadpool();
-
-    LOG(ERROR) << "Touch HAL service failed to join thread pool.";
-    return 1;
+    ABinderProcess_joinThreadPool();
+    return EXIT_FAILURE;  // should not reach
 }
