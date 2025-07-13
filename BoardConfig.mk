@@ -116,7 +116,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/framework_manifest.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_mondrian
+$(call soong_config_set, libinit, vendor_init_lib, //$(DEVICE_PATH):init_xiaomi_mondrian)
 TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_mondrian
 
 # GPS
@@ -217,12 +217,6 @@ TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
-#namespace definition for librecovery_updater
-#differentiate legacy 'sg' or 'bsg' framework
-SOONG_CONFIG_NAMESPACES += ufsbsg
-SOONG_CONFIG_ufsbsg += ufsframework
-SOONG_CONFIG_ufsbsg_ufsframework := bsg
-
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true

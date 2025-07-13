@@ -123,14 +123,10 @@ PRODUCT_COPY_FILES += \
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-qti \
-    android.hardware.boot@1.2-impl-qti.recovery \
-    android.hardware.boot@1.2-service \
-    bootctrl.xiaomi_sm8450 \
-    bootctrl.xiaomi_sm8450.recovery
+    android.hardware.boot-service.qti \
+    android.hardware.boot-service.qti.recovery
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctl
+$(call soong_config_set, ufsbsg, ufsframework, bsg)
 
 # Camera
 $(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
