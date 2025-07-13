@@ -29,6 +29,7 @@ allow hal_fingerprint_default mnt_vendor_file:dir search;
 allow hal_fingerprint_default vendor_displayfeature_device:chr_file { ioctl open read write };
 
 get_prop(hal_fingerprint_default, vendor_adsprpc_prop)
+get_prop(hal_fingerprint_default, vendor_camera_prop)
 get_prop(hal_fingerprint_default, vendor_panel_info_prop)
 set_prop(hal_fingerprint_default, vendor_fp_prop)
 set_prop(hal_fingerprint_default, vendor_fp_info_prop)

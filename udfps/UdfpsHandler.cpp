@@ -1,13 +1,15 @@
 /*
- * Copyright (C) 2022 The LineageOS Project
- *               2023 flakeforever
+ * Copyright (C) 2022-2025 The LineageOS Project
+ *               2023-2025 flakeforever
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "UdfpsHandler.xiaomi_sm8475"
 
+#include <aidl/android/hardware/biometrics/fingerprint/BnFingerprint.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android-base/unique_fd.h>
 
 #include <poll.h>
@@ -63,6 +65,8 @@ struct disp_local_hbm_req {
 #define MI_DISP_IOCTL_SET_LOCAL_HBM _IOW('D', 0x0E, struct disp_local_hbm_req)
 
 #define FOD_PRESS_STATUS_PATH "/sys/class/touch/touch_dev/fod_press_status"
+
+using ::aidl::android::hardware::biometrics::fingerprint::AcquiredInfo;
 
 namespace {
 
@@ -233,12 +237,6 @@ class XiaomiSm8475UdfpsHander : public UdfpsHandler {
         }).detach();
     }
 
-    void extCmd(int32_t cmd, int32_t param) {
-        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_X, fodX);
-        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_Y, fodY);
-        mDevice->extCmd(mDevice, cmd, param);
-    }
-
     void onFingerDown(uint32_t /*x*/, uint32_t /*y*/, float /*minor*/, float /*major*/) {
         // fodX = x;
         // fodY = y;
@@ -258,28 +256,19 @@ class XiaomiSm8475UdfpsHander : public UdfpsHandler {
         }
     }
 
-    void onEnrollResult(uint32_t fingerId, uint32_t groupId, uint32_t remaining) {
-        LOG(INFO) << __func__ << " fingerId: " << fingerId << " remaining: " << remaining;
-        if (remaining == 0 && fingerPressed) {
-            setFingerUp();
-        }
+    void onAuthenticationSucceeded() {
+        LOG(INFO) << __func__;
+        onFingerUp(); 
+    }
+
+    void onAuthenticationFailed() {
+        LOG(INFO) << __func__;
+        onFingerUp(); 
     }
 
     void cancel() {
         LOG(INFO) << __func__;
         setFingerUp();
-    }
-
-    void preEnroll() {
-        LOG(DEBUG) << __func__;
-    }
-
-    void enroll() {
-        LOG(DEBUG) << __func__;
-    }
-
-    void postEnroll() {
-        LOG(DEBUG) << __func__;
     }
 
   private:
@@ -291,6 +280,16 @@ class XiaomiSm8475UdfpsHander : public UdfpsHandler {
     bool fingerPressed;
     uint32_t fodX;
     uint32_t fodY;
+
+    void extCmd(int32_t cmd, int32_t param) {
+        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_X, fodX);
+        mDevice->extCmd(mDevice, COMMAND_FOD_PRESS_Y, fodY);
+        mDevice->extCmd(mDevice, cmd, param);
+
+        if (param == 0) {
+            setFingerUp();
+        }
+    }
 
     void registerDisplayEvent(int fd, int id, int type) {
         disp_event_req req;
@@ -314,17 +313,21 @@ class XiaomiSm8475UdfpsHander : public UdfpsHandler {
     }
 
     void setFingerUp() {
-        fingerPressed = false;
-        setDisplayLocalHBM(0, 0);
-        int buf[MAX_BUF_SIZE] = {TOUCH_ID, THP_FOD_DOWNUP_CTL, 0};
-        ioctl(touchDevice.get(), TOUCH_IOC_SET_CUR_VALUE, &buf);
+        if (fingerPressed) {
+            fingerPressed = false;
+            setDisplayLocalHBM(0, 0);
+            int buf[MAX_BUF_SIZE] = {TOUCH_ID, THP_FOD_DOWNUP_CTL, 0};
+            ioctl(touchDevice.get(), TOUCH_IOC_SET_CUR_VALUE, &buf);
+        }
     }
 
     void setFingerDown() {
-        fingerPressed = true;
-        setDisplayLocalHBM(0, 2);
-        int buf[MAX_BUF_SIZE] = {TOUCH_ID, THP_FOD_DOWNUP_CTL, 1};
-        ioctl(touchDevice.get(), TOUCH_IOC_SET_CUR_VALUE, &buf);
+        if (!fingerPressed) {
+            fingerPressed = true;
+            setDisplayLocalHBM(0, 2);
+            int buf[MAX_BUF_SIZE] = {TOUCH_ID, THP_FOD_DOWNUP_CTL, 1};
+            ioctl(touchDevice.get(), TOUCH_IOC_SET_CUR_VALUE, &buf);
+        }
     }
 };
 
