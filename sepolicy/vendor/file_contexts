@@ -54,9 +54,6 @@
 # Powershare
 /vendor/bin/hw/vendor\.lineage\.powershare-service\.default u:object_r:hal_lineage_powershare_default_exec:s0
 
-# Thermal
-/sys/class/thermal/thermal_zone87/temp u:object_r:sysfs_thermal:s0
-
 # Touch
 /vendor/bin/hw/vendor\.lineage\.touch-service\.xiaomi_sm8475 u:object_r:hal_lineage_touch_default_exec:s0
 
